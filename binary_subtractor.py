@@ -97,7 +97,7 @@ class BinarySubtractor:
 
     # Subtract B from A using two's complement method
     def binary_subtract(self, a_dec, b_dec):
-        print(f"=== Computing {a_dec} - {b_dec} using binary logic ===")
+        print(f"Computing {a_dec} - {b_dec} using binary logic")
         print()
 
         # Convert to binary
@@ -131,25 +131,26 @@ class BinarySubtractor:
                 decimal += (1 << i)  # 2^i
         return decimal
 
-
 def main():
-    # Initialize 4-bit subtractor
-    subtractor = BinarySubtractor(4)
-
     # Task 1: Binary Representation
     print("Task 1: Binary Representation")
-    print("=" * 50)
-    subtractor.decimal_to_binary(5)
-    subtractor.decimal_to_binary(3)
-    subtractor.decimal_to_binary(2)
+    # Use a 4-bit subtractor for the small numbers
+    subtractor_4bit = BinarySubtractor(4)
+    subtractor_4bit.decimal_to_binary(5)
+    subtractor_4bit.decimal_to_binary(3)
+    subtractor_4bit.decimal_to_binary(2)
 
-    # Task 2: Subtraction
-    print("Task 2: Subtraction")
-    print("=" * 50)
-
+    # Task 2: Subtraction with Two’s Complement
+    print("Task 2: Subtraction with Two’s Complement")
     # Example: 0101 - 0011 (5 - 3)
-    print("Computing 0101 - 0011:")
-    subtractor.binary_subtract(5, 3)
+    print("Computing 0101 - 0011 (5 - 3):")
+    subtractor_4bit.binary_subtract(5, 3)
+
+    # Requirement Test: A = 60, B = 40
+    print("Requirement Test: A = 60, B = 40")
+    # Initialize 8-bit subtractor for larger numbers
+    subtractor_8bit = BinarySubtractor(8)
+    subtractor_8bit.binary_subtract(60, 40)
 
 
 if __name__ == "__main__":
